@@ -64,7 +64,7 @@
             background-attachment: fixed;
         }
 
-        /* Subtle Floating Animation for Header Icons */
+        /* Floating & Pulse Animations */
         @keyframes floatSlow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-12px) rotate(2deg); }
@@ -176,7 +176,7 @@
                 </div>
                 <div>
                     <h3 class="text-xl font-bold font-display text-yellow-400">Google Sheets Data Config</h3>
-                    <p class="text-xs text-slate-400">Connect live Google CSV endpoints or fallback to high-fidelity mock data</p>
+                    <p class="text-xs text-slate-400">Connect live Apps Script / Google CSV endpoints or fallback to sample data</p>
                 </div>
             </div>
 
@@ -194,11 +194,11 @@
                 </div>
 
                 <div class="bg-blue-950/60 p-3 rounded-xl border border-blue-800/60 text-xs text-sky-200 space-y-1">
-                    <p class="font-bold text-yellow-300"><i class="fa-solid fa-lightbulb mr-1"></i>How to connect your Google Sheet:</p>
+                    <p class="font-bold text-yellow-300"><i class="fa-solid fa-lightbulb mr-1"></i>How to connect your Google Apps Script or Sheet:</p>
                     <ol class="list-decimal pl-4 space-y-1 text-slate-300">
-                        <li>In Google Sheets, go to <b>File &gt; Share &gt; Publish to web</b>.</li>
-                        <li>Select your sheet tab and export format <b>Comma-separated values (.csv)</b>.</li>
-                        <li>Paste the CSV link into the endpoint fields above.</li>
+                        <li>Paste your deployed Web App (`/exec`) URL or published CSV link into the endpoints above.</li>
+                        <li>Ensure column headers match: <b>Nama</b>, <b>No. Matriks</b>, and <b>Ketepatan %</b> (or <b>% Markah</b>).</li>
+                        <li>Changes auto-update on save!</li>
                     </ol>
                 </div>
             </div>
@@ -271,13 +271,13 @@
                 theme: "sky",
                 cardBg: "from-sky-500 to-blue-700",
                 buttonBg: "bg-yellow-400 hover:bg-yellow-300 text-blue-950",
-                dataEndpoint: "https://docs.google.com/spreadsheets/d/1G0zKIwAPCivoIWtst0HJ8Ogr-2-a-pNfdrYe79qyNhY/export?format=csv",
-                refreshInterval: 5000, // 5 seconds
+                dataEndpoint: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQkEkveDP8P8cSNTGvsRrfyDMCnT0pxUiHLk2lOJlfn-ri2K0B6dQjLqVrnYpWgLD8M4AQioYv-O2qU/pub?output=csv",
+                refreshInterval: 5000,
                 columns: {
                     name: ["Nama", "Name", "Student Name", "studentName"],
-                    matrix: ["Matriks", "Matrix", "Matric No", "matricNumber"],
+                    matrix: ["No. Matriks", "No Matriks", "Matriks", "Matrix", "Matric No", "matricNumber"],
                     section: ["Seksyen", "Section", "Class", "section"],
-                    score: ["Markah", "Score", "Marks", "score"],
+                    score: ["Ketepatan %", "Ketepatan", "% Markah", "% Mark", "Markah", "Score", "Marks", "score"],
                     timestamp: ["Masa", "Timestamp", "Time", "timestamp"]
                 },
                 illustrationSvg: `
@@ -289,22 +289,17 @@
                             </linearGradient>
                         </defs>
                         <rect width="200" height="160" rx="16" fill="url(#skyGrad)"/>
-                        <!-- Fluffy Clouds -->
                         <path d="M 20 50 Q 30 35 45 40 Q 55 25 75 35 Q 90 25 100 40 L 10 40 Z" fill="#ffffff" opacity="0.85"/>
                         <path d="M 120 90 Q 135 75 155 80 Q 170 65 185 80 L 110 80 Z" fill="#ffffff" opacity="0.7"/>
-                        <!-- Airplane -->
                         <g transform="translate(60, 55) rotate(-10)">
                             <ellipse cx="40" cy="20" rx="35" ry="14" fill="#ef4444"/>
                             <polygon points="40,20 15,38 25,20" fill="#dc2626"/>
                             <ellipse cx="60" cy="20" rx="8" ry="12" fill="#bae6fd"/>
-                            <!-- Propeller -->
                             <rect x="73" y="10" width="4" height="20" rx="2" fill="#334155"/>
                             <ellipse cx="75" cy="20" rx="3" ry="12" fill="#94a3b8" opacity="0.7"/>
-                            <!-- Wings -->
                             <polygon points="25,18 45,-5 55,-5 42,18" fill="#f87171"/>
                             <polygon points="25,22 45,45 55,45 42,22" fill="#b91c1c"/>
                         </g>
-                        <!-- Flying Pilot Chibi -->
                         <circle cx="130" cy="45" r="16" fill="#fde047"/>
                         <circle cx="130" cy="45" r="14" fill="#fca5a5"/>
                         <rect x="120" y="35" width="20" height="6" rx="3" fill="#78350f"/>
@@ -318,13 +313,13 @@
                 theme: "west",
                 cardBg: "from-amber-600 to-amber-900",
                 buttonBg: "bg-amber-400 hover:bg-amber-300 text-amber-950",
-                dataEndpoint: "",
+                dataEndpoint: "", // Currently Unavailable
                 refreshInterval: 5000,
                 columns: {
                     name: ["Nama", "Name", "Student Name", "studentName"],
-                    matrix: ["Matriks", "Matrix", "Matric No", "matricNumber"],
+                    matrix: ["No. Matriks", "No Matriks", "Matriks", "Matrix", "Matric No", "matricNumber"],
                     section: ["Seksyen", "Section", "Class", "section"],
-                    score: ["Markah", "Score", "Marks", "score"],
+                    score: ["Ketepatan %", "% Markah", "% Mark", "Markah", "Score", "Marks", "score"],
                     timestamp: ["Masa", "Timestamp", "Time", "timestamp"]
                 },
                 illustrationSvg: `
@@ -336,15 +331,11 @@
                             </linearGradient>
                         </defs>
                         <rect width="200" height="160" rx="16" fill="url(#westGrad)"/>
-                        <!-- Cacti -->
                         <path d="M 30 140 L 30 90 Q 30 80 40 80 L 40 140 M 20 110 Q 10 110 10 100 L 10 90 M 50 105 Q 60 105 60 95 L 60 85" stroke="#15803d" stroke-width="6" stroke-linecap="round" fill="none"/>
                         <path d="M 170 140 L 170 100 Q 170 90 180 90" stroke="#166534" stroke-width="5" stroke-linecap="round" fill="none"/>
-                        <!-- Sheriff Badge & Cowboy Hat -->
                         <g transform="translate(85, 40)">
-                            <!-- Cowboy Hat -->
                             <path d="M 0 30 Q 30 10 60 30 Q 80 32 60 40 Q 30 45 0 40 Z" fill="#451a03"/>
                             <path d="M 15 30 Q 30 15 45 30 L 40 20 Q 30 10 20 20 Z" fill="#78350f"/>
-                            <!-- Sheriff Star -->
                             <polygon points="30,45 34,55 45,55 36,62 39,72 30,66 21,72 24,62 15,55 26,55" fill="#facc15" stroke="#b45309" stroke-width="1.5"/>
                         </g>
                     </svg>
@@ -352,87 +343,58 @@
             }
         ];
 
-        /* Default High-Fidelity Mock Student Data */
+        /* Default High-Fidelity Sample Data for Demo Mode */
         const MOCK_STUDENTS_SKY = [
-            { studentName: "Aisyah Rahman", matricNumber: "AD241001", section: "1A", score: 30, timestamp: "2026-10-16 10:15:00" },
-            { studentName: "Harith Danial bin Rosli", matricNumber: "AD241045", section: "1B", score: 28, timestamp: "2026-10-16 10:14:20" },
-            { studentName: "Siti Nabila binti Ahmad", matricNumber: "AD241078", section: "1A", score: 27, timestamp: "2026-10-16 10:12:00" },
-            { studentName: "Faris Hakim bin Azman", matricNumber: "AD241032", section: "1C", score: 26, timestamp: "2026-10-16 10:10:05" },
-            { studentName: "Nurul Izzati binti Zulkifli", matricNumber: "AD241019", section: "1B", score: 25, timestamp: "2026-10-16 10:08:30" },
-            { studentName: "Amirul Syafiq bin Hassan", matricNumber: "AD241066", section: "1A", score: 24, timestamp: "2026-10-16 10:05:12" },
-            { studentName: "Damia Qistina binti Razak", matricNumber: "AD241089", section: "1C", score: 24, timestamp: "2026-10-16 10:06:00" },
-            { studentName: "Hafiz Iskandar bin Zain", matricNumber: "AD241055", section: "1B", score: 23, timestamp: "2026-10-16 09:55:00" },
-            { studentName: "Ching Wei Lun", matricNumber: "AD241012", section: "1A", score: 22, timestamp: "2026-10-16 09:50:00" },
-            { studentName: "Divya A/P Kumar", matricNumber: "AD241093", section: "1B", score: 21, timestamp: "2026-10-16 09:45:00" },
-            { studentName: "Muhammad Luqman bin Ibrahim", matricNumber: "AD241102", section: "1C", score: 20, timestamp: "2026-10-16 09:40:00" },
-            { studentName: "Anis Zahra binti Mansor", matricNumber: "AD241115", section: "1A", score: 19, timestamp: "2026-10-16 09:35:00" },
-            { studentName: "Khairul Nizam bin Bakar", matricNumber: "AD241059", section: "1B", score: 18, timestamp: "2026-10-16 09:30:00" },
-            { studentName: "Nur Ain Maisarah binti Yusof", matricNumber: "AD241031", section: "1A", score: 17, timestamp: "2026-10-16 09:25:00" },
-            { studentName: "Tan Jia Wei", matricNumber: "AD241140", section: "1C", score: 16, timestamp: "2026-10-16 09:20:00" },
-            { studentName: "Siti Hajar binti Osman", matricNumber: "AD241067", section: "1B", score: 15, timestamp: "2026-10-16 09:15:00" },
-            { studentName: "Danish Irfan bin Farid", matricNumber: "AD241036", section: "1A", score: 14, timestamp: "2026-10-16 09:10:00" },
-            { studentName: "Aisyah Humaira binti Kamal", matricNumber: "AD241082", section: "1C", score: 13, timestamp: "2026-10-16 09:05:00" },
-            { studentName: "Zulhelmi bin Mustaffa", matricNumber: "AD241077", section: "1C", score: 12, timestamp: "2026-10-16 09:00:00" },
-            { studentName: "Sofia Adriana binti Razali", matricNumber: "AD241048", section: "1A", score: 10, timestamp: "2026-10-16 08:50:00" },
-            { studentName: "Lim Ming Jie", matricNumber: "AD241188", section: "1B", score: 9, timestamp: "2026-10-16 08:40:00" },
-            { studentName: "Nur Farah binti Hashim", matricNumber: "AD241190", section: "1C", score: 8, timestamp: "2026-10-16 08:30:00" }
+            { studentName: "Aisyah Rahman", matricNumber: "AD241001", section: "1A", score: 98, timestamp: "2026-10-16 10:15:00" },
+            { studentName: "Harith Danial bin Rosli", matricNumber: "AD241045", section: "1B", score: 95, timestamp: "2026-10-16 10:14:20" },
+            { studentName: "Siti Nabila binti Ahmad", matricNumber: "AD241078", section: "1A", score: 92, timestamp: "2026-10-16 10:12:00" },
+            { studentName: "Faris Hakim bin Azman", matricNumber: "AD241032", section: "1C", score: 88, timestamp: "2026-10-16 10:10:05" },
+            { studentName: "Nurul Izzati binti Zulkifli", matricNumber: "AD241019", section: "1B", score: 85, timestamp: "2026-10-16 10:08:30" },
+            { studentName: "Amirul Syafiq bin Hassan", matricNumber: "AD241066", section: "1A", score: 82, timestamp: "2026-10-16 10:05:12" },
+            { studentName: "Damia Qistina binti Razak", matricNumber: "AD241089", section: "1C", score: 82, timestamp: "2026-10-16 10:06:00" },
+            { studentName: "Hafiz Iskandar bin Zain", matricNumber: "AD241055", section: "1B", score: 79, timestamp: "2026-10-16 09:55:00" },
+            { studentName: "Ching Wei Lun", matricNumber: "AD241012", section: "1A", score: 75, timestamp: "2026-10-16 09:50:00" },
+            { studentName: "Divya A/P Kumar", matricNumber: "AD241093", section: "1B", score: 71, timestamp: "2026-10-16 09:45:00" }
         ];
 
         const MOCK_STUDENTS_WEST = [
-            { studentName: "Muhammad Arif bin Said", matricNumber: "AD241015", section: "1B", score: 30, timestamp: "2026-10-16 10:20:00" },
-            { studentName: "Sofia Adriana binti Razali", matricNumber: "AD241048", section: "1A", score: 29, timestamp: "2026-10-16 10:18:10" },
-            { studentName: "Zulhelmi bin Mustaffa", matricNumber: "AD241077", section: "1C", score: 28, timestamp: "2026-10-16 10:15:00" },
-            { studentName: "Nur Ain Maisarah binti Yusof", matricNumber: "AD241031", section: "1A", score: 27, timestamp: "2026-10-16 10:12:00" },
-            { studentName: "Khairul Nizam bin Bakar", matricNumber: "AD241059", section: "1B", score: 26, timestamp: "2026-10-16 10:09:40" },
-            { studentName: "Aisyah Humaira binti Kamal", matricNumber: "AD241082", section: "1C", score: 26, timestamp: "2026-10-16 10:10:00" },
-            { studentName: "Danish Irfan bin Farid", matricNumber: "AD241036", section: "1A", score: 25, timestamp: "2026-10-16 10:05:00" },
-            { studentName: "Siti Hajar binti Osman", matricNumber: "AD241067", section: "1B", score: 25, timestamp: "2026-10-16 10:06:15" },
-            { studentName: "Aisyah Rahman", matricNumber: "AD241001", section: "1A", score: 24, timestamp: "2026-10-16 10:00:00" },
-            { studentName: "Ching Wei Lun", matricNumber: "AD241012", section: "1A", score: 23, timestamp: "2026-10-16 09:55:00" }
+            { studentName: "Muhammad Arif bin Said", matricNumber: "AD241015", section: "1B", score: 99, timestamp: "2026-10-16 10:20:00" },
+            { studentName: "Sofia Adriana binti Razali", matricNumber: "AD241048", section: "1A", score: 94, timestamp: "2026-10-16 10:18:10" },
+            { studentName: "Zulhelmi bin Mustaffa", matricNumber: "AD241077", section: "1C", score: 91, timestamp: "2026-10-16 10:15:00" }
         ];
 
         /* ==========================================================================
            2. GLOBAL STATE
            ========================================================================== */
         let state = {
-            currentView: 'home', // 'home' or game.id
+            currentView: 'home',
             isDemoMode: false,
             activeGameId: null,
             currentPage: 1,
             itemsPerPage: 20,
             autoRefreshTimer: null,
             lastUpdated: null,
-            leaderboardData: {} // gameId -> student array
+            leaderboardData: {}
         };
 
         /* ==========================================================================
            3. AUTOMATIC CARTOON AVATAR GENERATION ENGINE (SVG BASED)
            ========================================================================== */
-        /**
-         * Simple deterministic string hashing algorithm
-         */
         function hashString(str) {
             let hash = 0;
             if (!str || str.length === 0) return hash;
             for (let i = 0; i < str.length; i++) {
                 const char = str.charCodeAt(i);
                 hash = ((hash << 5) - hash) + char;
-                hash |= 0; // Convert to 32bit integer
+                hash |= 0;
             }
             return Math.abs(hash);
         }
 
-        /**
-         * Evaluates student name heuristics:
-         * - Contains 'binti' (standalone word) -> Female Hijab style
-         * - Contains 'bin' (standalone word) -> Male style
-         * - Otherwise -> Name-based deterministic fallback
-         */
         function detectGenderStyle(name) {
             if (!name) return { type: 'neutral', variant: 0 };
             
             const cleanName = name.toLowerCase().trim();
-            // Use word boundary regex matching
             const isBinti = /\bbinti\b/.test(cleanName) || /\bbt\.?\b/.test(cleanName);
             const isBin = /\bbin\b/.test(cleanName) || /\bb\.?\b/.test(cleanName);
 
@@ -443,22 +405,15 @@
             } else if (isBin) {
                 return { type: 'male', variant: hash % 4 };
             } else {
-                // Heuristic for neutral or other names
                 const choices = ['female-no-hijab', 'male', 'neutral'];
                 return { type: choices[hash % choices.length], variant: hash % 3 };
             }
         }
 
-        /**
-         * Procedural Cartoon Avatar Renderer (Pure SVG)
-         * Guarantees high quality, vector sharpness, cute chibi proportion,
-         * transparent background, ranking crowns, medals & playful accessories.
-         */
         function generateAvatarSVG(name, matrix, rank, gameTheme) {
             const gender = detectGenderStyle(name);
             const seed = hashString((matrix || name || 'student').toLowerCase());
             
-            // Color palettes
             const skinTones = ['#fde047', '#fed7aa', '#fca5a5', '#f3d5b5', '#e0a96d'];
             const hijabColors = ['#0284c7', '#38bdf8', '#ec4899', '#8b5cf6', '#10b981', '#f59e0b', '#64748b'];
             const shirtColors = ['#ef4444', '#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#06b6d4'];
@@ -469,61 +424,48 @@
             const shirtColor = shirtColors[(seed + 2) % shirtColors.length];
             const hairColor = hairColors[seed % hairColors.length];
 
-            let baseHeadSvg = '';
             let hairOrHijabSvg = '';
             
-            // 1. BASE FACE & EYES
             const faceSvg = `
                 <circle cx="50" cy="52" r="28" fill="${skin}"/>
-                <!-- Cute Blush Circles -->
                 <circle cx="36" cy="58" r="4.5" fill="#f43f5e" opacity="0.4"/>
                 <circle cx="64" cy="58" r="4.5" fill="#f43f5e" opacity="0.4"/>
-                <!-- Anime Sparkle Eyes -->
                 <ellipse cx="40" cy="50" rx="3.5" ry="4.5" fill="#0f172a"/>
                 <ellipse cx="60" cy="50" rx="3.5" ry="4.5" fill="#0f172a"/>
                 <circle cx="41.5" cy="48.5" r="1.5" fill="#ffffff"/>
                 <circle cx="61.5" cy="48.5" r="1.5" fill="#ffffff"/>
-                <!-- Smile -->
                 <path d="M 44 60 Q 50 66 56 60" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
             `;
 
-            // 2. HAIRSTYLE / HIJAB SELECTION
             if (gender.type === 'hijab') {
                 hairOrHijabSvg = `
-                    <!-- Hijab Inner Cap -->
                     <path d="M 24 50 Q 50 22 76 50 Q 50 30 24 50 Z" fill="#ffffff" opacity="0.9"/>
-                    <!-- Main Hijab Outer Wrap -->
                     <path d="M 20 52 Q 18 20 50 18 Q 82 20 80 52 Q 84 82 50 84 Q 16 82 20 52 Z" fill="${hijabColor}"/>
                     <path d="M 28 55 Q 50 72 72 55 Q 50 82 28 55 Z" fill="${hijabColor}" filter="brightness(0.9)"/>
                     ${faceSvg}
                 `;
             } else if (gender.type === 'male') {
                 const hairStyles = [
-                    `<path d="M 22 48 Q 20 20 50 18 Q 80 20 78 48 Q 70 26 50 28 Q 30 26 22 48 Z" fill="${hairColor}"/>`, // Spiky
-                    `<path d="M 20 46 Q 22 18 50 18 Q 78 18 80 46 Q 60 22 50 30 Q 35 22 20 46 Z" fill="${hairColor}"/>`  // Side Part
+                    `<path d="M 22 48 Q 20 20 50 18 Q 80 20 78 48 Q 70 26 50 28 Q 30 26 22 48 Z" fill="${hairColor}"/>`,
+                    `<path d="M 20 46 Q 22 18 50 18 Q 78 18 80 46 Q 60 22 50 30 Q 35 22 20 46 Z" fill="${hairColor}"/>`
                 ];
                 hairOrHijabSvg = `
                     ${faceSvg}
                     ${hairStyles[seed % hairStyles.length]}
                 `;
-            } else { // Female No Hijab / Neutral
+            } else {
                 hairOrHijabSvg = `
-                    <!-- Long/Cute Bob Hair behind face -->
                     <path d="M 18 45 Q 16 80 30 82 Q 50 82 70 82 Q 84 80 82 45 Z" fill="${hairColor}"/>
                     ${faceSvg}
-                    <!-- Front Bangs -->
                     <path d="M 24 45 Q 50 22 76 45 Q 50 34 24 45 Z" fill="${hairColor}"/>
                 `;
             }
 
-            // 3. RANKING & FUN ACCESSORIES
             let accessorySvg = '';
 
-            // Rank 1: Golden Crown
             if (rank === 1) {
                 accessorySvg = `
                     <g transform="translate(30, 8)">
-                        <!-- Crown Base -->
                         <polygon points="0,22 8,6 20,16 32,4 40,22" fill="#facc15" stroke="#b45309" stroke-width="2" stroke-linejoin="round"/>
                         <circle cx="8" cy="6" r="3" fill="#ef4444"/>
                         <circle cx="20" cy="16" r="2.5" fill="#3b82f6"/>
@@ -532,7 +474,6 @@
                     </g>
                 `;
             } else if (rank === 2) {
-                // Silver Medal Badge on chest
                 accessorySvg = `
                     <g transform="translate(68, 68)">
                         <circle cx="10" cy="10" r="9" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
@@ -540,7 +481,6 @@
                     </g>
                 `;
             } else if (rank === 3) {
-                // Bronze Medal Badge on chest
                 accessorySvg = `
                     <g transform="translate(68, 68)">
                         <circle cx="10" cy="10" r="9" fill="#f97316" stroke="#c2410c" stroke-width="2"/>
@@ -548,609 +488,607 @@
                     </g>
                 `;
             } else {
-                // Ranks 4+: Deterministic Accessories (Glasses, Frog Hat, Headphones, Cowboy Hat)
                 const accIndex = (seed + rank) % 5;
-                if (accIndex === 0) { // Black Sunglasses
+                if (accIndex === 0) {
                     accessorySvg = `
                         <g transform="translate(26, 43)">
                             <rect x="0" y="0" width="22" height="13" rx="3" fill="#0f172a"/>
                             <rect x="26" y="0" width="22" height="13" rx="3" fill="#0f172a"/>
                             <line x1="22" y1="4" x2="26" y2="4" stroke="#0f172a" stroke-width="3"/>
-                            <!-- Glare -->
-                            <line x1="3" y1="2" x2="10" y2="10" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                            <line x1="29" y1="2" x2="36" y2="10" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
                         </g>
                     `;
-                } else if (accIndex === 1) { // Headphones
+                } else if (accIndex === 1) {
                     accessorySvg = `
-                        <g transform="translate(14, 25)">
-                            <path d="M 6 30 A 30 30 0 0 1 66 30" stroke="#ef4444" stroke-width="5" fill="none"/>
-                            <rect x="0" y="24" width="10" height="20" rx="4" fill="#1e293b"/>
-                            <rect x="62" y="24" width="10" height="20" rx="4" fill="#1e293b"/>
-                        </g>
+                        <path d="M 18 50 A 32 32 0 0 1 82 50" stroke="#ec4899" stroke-width="5" fill="none"/>
+                        <rect x="14" y="42" width="8" height="18" rx="4" fill="#ec4899"/>
+                        <rect x="78" y="42" width="8" height="18" rx="4" fill="#ec4899"/>
                     `;
-                } else if (accIndex === 2) { // Frog Hat
+                } else if (accIndex === 2) {
                     accessorySvg = `
-                        <g transform="translate(22, 12)">
-                            <path d="M 0 25 Q 28 8 56 25 Z" fill="#22c55e"/>
-                            <circle cx="14" cy="12" r="8" fill="#22c55e"/>
-                            <circle cx="42" cy="12" r="8" fill="#22c55e"/>
-                            <circle cx="14" cy="12" r="4" fill="#ffffff"/>
-                            <circle cx="42" cy="12" r="4" fill="#ffffff"/>
-                            <circle cx="14" cy="12" r="2" fill="#000000"/>
-                            <circle cx="42" cy="12" r="2" fill="#000000"/>
-                        </g>
-                    `;
-                } else if (accIndex === 3 || gameTheme === 'west') { // Cowboy Hat
-                    accessorySvg = `
-                        <g transform="translate(12, 10)">
-                            <path d="M 0 22 Q 38 10 76 22 Q 82 24 66 28 Q 38 32 10 28 Z" fill="#78350f"/>
-                            <path d="M 20 22 Q 38 8 56 22 L 50 12 Q 38 4 26 12 Z" fill="#451a03"/>
-                        </g>
+                        <path d="M 25 30 Q 50 18 75 30 Q 50 12 25 30 Z" fill="#22c55e"/>
+                        <circle cx="35" cy="18" r="6" fill="#22c55e"/>
+                        <circle cx="35" cy="18" r="3" fill="#ffffff"/>
+                        <circle cx="35" cy="18" r="1.5" fill="#000000"/>
+                        <circle cx="65" cy="18" r="6" fill="#22c55e"/>
+                        <circle cx="65" cy="18" r="3" fill="#ffffff"/>
+                        <circle cx="65" cy="18" r="1.5" fill="#000000"/>
                     `;
                 }
             }
 
-            // Combine into full SVG string
+            const bodySvg = `
+                <path d="M 30 78 Q 50 72 70 78 L 80 100 L 20 100 Z" fill="${shirtColor}"/>
+            `;
+
             return `
                 <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md overflow-visible">
-                    <!-- Base Shirt / Shoulders -->
-                    <path d="M 22 88 Q 50 72 78 88 L 84 100 L 16 100 Z" fill="${shirtColor}"/>
-                    <path d="M 40 80 L 50 90 L 60 80 Z" fill="#ffffff" opacity="0.8"/>
-                    
-                    <!-- Head & Hair/Hijab -->
+                    ${bodySvg}
                     ${hairOrHijabSvg}
-
-                    <!-- Accessories -->
                     ${accessorySvg}
                 </svg>
             `;
         }
 
         /* ==========================================================================
-           4. DATA INTEGRATION & GOOGLE SHEETS SERVICE MODULE
+           4. DATA FETCHING & CSV/JSON PARSING ENGINE
            ========================================================================== */
-        /**
-         * Dynamic Column Mapper for heterogeneous Google Sheets CSV formats
-         */
-        function mapCsvRowToStudent(row, headers, columnRules) {
-            const student = {
-                studentName: "Pelajar UTHM",
-                matricNumber: "AD240000",
-                section: "1A",
-                score: 0,
-                timestamp: new Date().toISOString()
-            };
-
-            headers.forEach((header, idx) => {
-                const val = (row[idx] || "").trim();
-                const cleanHeader = header.trim();
-
-                // Check Name mapping
-                if (columnRules.name.some(k => k.toLowerCase() === cleanHeader.toLowerCase())) {
-                    student.studentName = val || student.studentName;
-                }
-                // Check Matrix mapping
-                else if (columnRules.matrix.some(k => k.toLowerCase() === cleanHeader.toLowerCase())) {
-                    student.matricNumber = val || student.matricNumber;
-                }
-                // Check Section mapping
-                else if (columnRules.section.some(k => k.toLowerCase() === cleanHeader.toLowerCase())) {
-                    student.section = val || student.section;
-                }
-                // Check Score mapping
-                else if (columnRules.score.some(k => k.toLowerCase() === cleanHeader.toLowerCase())) {
-                    const parsed = parseFloat(val);
-                    student.score = isNaN(parsed) ? 0 : parsed;
-                }
-                // Check Timestamp mapping
-                else if (columnRules.timestamp.some(k => k.toLowerCase() === cleanHeader.toLowerCase())) {
-                    student.timestamp = val || student.timestamp;
-                }
-            });
-
-            return student;
-        }
-
-        /**
-         * Robust CSV Parser handling escaped commas and quotes
-         */
-        function parseCSV(text) {
-            const lines = text.split(/\r\n|\n/);
+        function parseCSV(csvText) {
+            if (!csvText) return { headers: [], data: [] };
+            
+            // Clean BOM and carriage returns
+            const cleanText = csvText.replace(/^\uFEFF/, '').trim();
+            const lines = cleanText.split(/\r\n|\n/);
             const result = [];
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
+            
+            if (lines.length === 0) return { headers: [], data: [] };
+
+            // Helper to split CSV row handling quoted values
+            function splitCSVLine(line) {
+                const values = [];
+                let current = '';
+                let inQuotes = false;
                 
-                // Simple regex parser for comma separation
-                const row = [];
-                let insideQuote = false;
-                let entry = '';
-                for (let j = 0; j < line.length; j++) {
-                    const char = line[j];
-                    if (char === '"') {
-                        insideQuote = !insideQuote;
-                    } else if (char === ',' && !insideQuote) {
-                        row.push(entry);
-                        entry = '';
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    if (char === '"' || char === "'") {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim().replace(/^["']|["']$/g, ''));
+                        current = '';
                     } else {
-                        entry += char;
+                        current += char;
                     }
                 }
-                row.push(entry);
-                result.push(row);
+                values.push(current.trim().replace(/^["']|["']$/g, ''));
+                return values;
             }
-            return result;
+
+            const headers = splitCSVLine(lines[0]);
+
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                
+                const row = splitCSVLine(lines[i]);
+                const obj = {};
+                
+                headers.forEach((header, index) => {
+                    let val = row[index] !== undefined ? row[index] : '';
+                    obj[header] = val;
+                });
+                result.push(obj);
+            }
+            return { headers, data: result };
         }
 
-        /**
-         * Fetch Leaderboard Data from Google Sheet CSV or Demo Fallback
-         */
-        async function fetchGameData(gameConfig) {
-            if (state.isDemoMode || !gameConfig.dataEndpoint) {
-                // Return local mock data with lightweight random drift to test real-time update engine
-                let mockList = gameConfig.id === 'sky-quiz' ? [...MOCK_STUDENTS_SKY] : [...MOCK_STUDENTS_WEST];
-                
-                // Simulate periodic score updates during live polling
-                mockList = mockList.map(s => ({
-                    ...s,
-                    // 10% chance to gain 1-2 score points during demo updates
-                    score: Math.random() < 0.10 ? s.score + Math.floor(Math.random() * 2) : s.score
-                }));
+        function normalizeStudentData(parsedObj, gameConfig) {
+            const { headers, data } = parsedObj;
+            
+            if (!headers || headers.length === 0) return [];
 
-                return processAndSortData(mockList);
+            function findFieldKey(candidates) {
+                return headers.find(h => candidates.some(c => h.toLowerCase().replace(/[^a-z0-9]/g, '') === c.toLowerCase().replace(/[^a-z0-9]/g, '')));
             }
 
-            try {
-                const response = await fetch(gameConfig.dataEndpoint, { cache: 'no-cache' });
-                if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
-                
-                const csvText = await response.text();
-                const parsed = parseCSV(csvText);
-                if (parsed.length < 2) return []; // Empty sheet or only header
+            const nameKey = findFieldKey(gameConfig.columns.name) || headers[0];
+            const matrixKey = findFieldKey(gameConfig.columns.matrix) || headers[1];
+            const sectionKey = findFieldKey(gameConfig.columns.section);
+            
+            // Explicitly search for exact "Ketepatan %" header variants first
+            const precisionCandidates = ["Ketepatan %", "Ketepatan", "% Ketepatan", "Ketepatan (%)"];
+            let scoreKey = findFieldKey(precisionCandidates);
 
-                const headers = parsed[0];
-                const rows = parsed.slice(1);
-
-                const rawStudents = rows.map(row => mapCsvRowToStudent(row, headers, gameConfig.columns));
-                return processAndSortData(rawStudents);
-            } catch (err) {
-                console.warn(`[Sheets Service] Failed to fetch live endpoint for ${gameConfig.name}. Preserving cached view.`, err);
-                // Return current cached state or empty fallback
-                return state.leaderboardData[gameConfig.id] || [];
+            // Fallback to configured score columns if explicit Ketepatan % column is not found
+            if (!scoreKey) {
+                scoreKey = findFieldKey(gameConfig.columns.score) || headers[2] || headers[3];
             }
+
+            const timeKey = findFieldKey(gameConfig.columns.timestamp) || headers[headers.length - 1];
+
+            return data.map(item => {
+                // Extract value and clean percent signs, spaces, or text formatting
+                const rawVal = item[scoreKey];
+                const rawScoreStr = (rawVal !== undefined && rawVal !== null) 
+                    ? String(rawVal).replace('%', '').trim() 
+                    : "0";
+                
+                // Parse precise accuracy value
+                const rawScore = Math.round(parseFloat(rawScoreStr));
+
+                return {
+                    studentName: item[nameKey] || "Pelajar UTHM",
+                    matricNumber: item[matrixKey] || "AD240000",
+                    section: (sectionKey && item[sectionKey]) ? item[sectionKey] : null,
+                    score: isNaN(rawScore) ? 0 : rawScore,
+                    timestamp: item[timeKey] || new Date().toISOString()
+                };
+            }).filter(student => student.studentName && student.studentName.trim() !== "");
         }
 
-        /**
-         * Sorts student records by score descending, breaking ties deterministically
-         */
-        function processAndSortData(students) {
-            // Deduplicate by Matrix Number if duplicates exist
-            const uniqueMap = new Map();
-            students.forEach(s => {
-                if (!s.matricNumber) return;
-                const existing = uniqueMap.get(s.matricNumber);
-                if (!existing || s.score > existing.score) {
-                    uniqueMap.set(s.matricNumber, s);
-                }
-            });
-
-            const uniqueList = Array.from(uniqueMap.values());
-
-            // Sort logic: Score Descending -> Timestamp Descending -> Name Alphabetical
-            return uniqueList.sort((a, b) => {
+        function sortLeaderboardData(students) {
+            return students.sort((a, b) => {
                 if (b.score !== a.score) {
                     return b.score - a.score;
                 }
-                // Secondary tie-breaker: Timestamp
-                if (a.timestamp && b.timestamp) {
-                    return new Date(b.timestamp) - new Date(a.timestamp);
-                }
-                // Final tie-breaker: Name
-                return a.studentName.localeCompare(b.studentName);
+                return new Date(a.timestamp || 0) - new Date(b.timestamp || 0);
             });
         }
 
+        async function fetchGameData(game) {
+            if (state.isDemoMode) {
+                if (game.id === 'sky-quiz') return [...MOCK_STUDENTS_SKY];
+                if (game.id === 'wild-wild-west') return [...MOCK_STUDENTS_WEST];
+                return [...MOCK_STUDENTS_SKY];
+            }
+
+            // If there is no Google Sheet endpoint configured, treat data as unavailable (empty)
+            if (!game.dataEndpoint || game.dataEndpoint.trim() === '') {
+                return [];
+            }
+
+            let rawUrl = game.dataEndpoint.trim();
+
+            // Convert standard Google Sheet URL formats to direct export & gviz formats
+            let candidateUrls = [rawUrl];
+
+            const pubMatch = rawUrl.match(/\/spreadsheets\/d\/e\/([a-zA-Z0-9-_]+)/);
+            const docMatch = rawUrl.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+
+            if (pubMatch && pubMatch[1]) {
+                const pubId = pubMatch[1];
+                candidateUrls.unshift(`https://docs.google.com/spreadsheets/d/e/${pubId}/pub?output=csv`);
+                candidateUrls.unshift(`https://docs.google.com/spreadsheets/d/e/${pubId}/gviz/tq?tqx=out:csv`);
+            } else if (docMatch && docMatch[1]) {
+                const sheetId = docMatch[1];
+                candidateUrls.unshift(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`);
+                candidateUrls.unshift(`https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`);
+            }
+
+            // Generate proxy fallback variations
+            const allUrlsToTry = [];
+            candidateUrls.forEach(url => {
+                allUrlsToTry.push(url);
+                allUrlsToTry.push(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
+            });
+
+            let responseText = "";
+            let fetchSuccess = false;
+
+            for (const url of allUrlsToTry) {
+                try {
+                    const response = await fetch(url, { method: 'GET', cache: 'no-store' });
+                    if (response.ok) {
+                        const text = await response.text();
+                        if (text && text.trim().length > 10 && !text.includes('<!DOCTYPE html>')) {
+                            responseText = text;
+                            fetchSuccess = true;
+                            break;
+                        }
+                    }
+                } catch (e) {
+                    // Suppress individual proxy attempt warnings
+                }
+            }
+
+            if (!fetchSuccess || !responseText) {
+                console.warn(`Could not reach live endpoint for ${game.name}. Returning empty dataset.`);
+                return [];
+            }
+
+            try {
+                let normalized = [];
+                try {
+                    const jsonData = JSON.parse(responseText);
+                    const rawList = Array.isArray(jsonData) ? jsonData : (jsonData.data || jsonData.rows || []);
+                    if (rawList.length > 0) {
+                        const headers = Object.keys(rawList[0]);
+                        normalized = normalizeStudentData({ headers, data: rawList }, game);
+                    }
+                } catch (e) {
+                    const parsed = parseCSV(responseText);
+                    normalized = normalizeStudentData(parsed, game);
+                }
+                
+                return normalized.length > 0 ? sortLeaderboardData(normalized) : [];
+            } catch (err) {
+                console.error(`Error parsing data for ${game.name}:`, err);
+                return [];
+            }
+        }
+
         /* ==========================================================================
-           5. UI RENDERER & ROUTER MODULE
+           5. VIEW RENDERING ENGINE
            ========================================================================== */
-        
-        function navigateTo(viewId) {
-            state.currentView = viewId;
-            state.currentPage = 1; // Reset pagination on view change
+        function navigateTo(viewName) {
+            state.currentView = viewName;
+            state.currentPage = 1;
             
-            // Adjust Background theme
             const body = document.body;
             body.className = "text-slate-800 min-h-screen flex flex-col transition-colors duration-500 ";
             
-            if (viewId === 'home') {
+            if (viewName === 'home') {
                 body.classList.add('bg-uthm-campus');
-                state.activeGameId = null;
+            } else if (viewName === 'sky-quiz') {
+                body.classList.add('bg-sky-quiz');
+            } else if (viewName === 'wild-wild-west') {
+                body.classList.add('bg-wild-west');
             } else {
-                const game = GAME_CONFIGS.find(g => g.id === viewId);
-                if (game && game.theme === 'sky') body.classList.add('bg-sky-quiz');
-                else if (game && game.theme === 'west') body.classList.add('bg-wild-west');
-                else body.classList.add('bg-uthm-campus');
-                state.activeGameId = viewId;
+                body.classList.add('bg-uthm-campus');
             }
 
-            render();
-            triggerDataSync();
+            renderApp();
         }
 
-        /**
-         * Renders the Main Game Selection Portal (Homepage)
-         */
-        function renderHomeView() {
-            const gameCardsHtml = GAME_CONFIGS.map(game => `
-                <div class="group relative bg-slate-900/80 backdrop-blur-md rounded-3xl p-5 border-2 border-white/20 shadow-game hover:shadow-game-hover transform hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden">
-                    <!-- Card Background Glow Accent -->
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-gradient-to-br ${game.cardBg} opacity-30 rounded-full blur-2xl group-hover:opacity-60 transition"></div>
-                    
-                    <div>
-                        <!-- Game Illustration Header -->
-                        <div class="w-full h-44 rounded-2xl bg-slate-800/80 border border-white/10 p-3 mb-4 flex items-center justify-center overflow-hidden shadow-inner group-hover:scale-[1.02] transition duration-300">
-                            ${game.illustrationSvg}
+        function renderApp() {
+            const container = document.getElementById('app-container');
+            if (!container) return;
+
+            if (state.currentView === 'home') {
+                renderHomeView(container);
+            } else {
+                renderLeaderboardView(container, state.currentView);
+            }
+        }
+
+        /* Home Page / Dashboard View */
+        function renderHomeView(container) {
+            const cardsHtml = GAME_CONFIGS.map(game => {
+                const topWinner = state.leaderboardData[game.id] ? state.leaderboardData[game.id][0] : null;
+                const isUnavailable = !state.isDemoMode && (!game.dataEndpoint || game.dataEndpoint.trim() === '');
+
+                return `
+                    <div class="bg-slate-900/90 backdrop-blur-md border-2 border-white/10 rounded-3xl p-6 flex flex-col justify-between shadow-card-${game.theme} hover:shadow-game-hover hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group">
+                        <!-- Top Header & Card Background Illustration -->
+                        <div>
+                            <div class="w-full h-40 bg-slate-950/60 rounded-2xl overflow-hidden mb-5 border border-white/10 flex items-center justify-center p-4 relative">
+                                ${game.illustrationSvg}
+                            </div>
+
+                            <h2 class="text-2xl font-bold font-display text-white mb-1 flex items-center justify-between">
+                                <span>${game.name}</span>
+                                ${isUnavailable ? `<span class="text-xs bg-red-500/20 text-red-400 border border-red-500/40 px-2.5 py-0.5 rounded-full font-sans font-bold flex items-center gap-1"><i class="fa-solid fa-circle-exclamation"></i> Data Unavailable</span>` : ''}
+                            </h2>
+                            <p class="text-xs text-sky-200/80 mb-4">${game.subtitle}</p>
+
+                            <!-- Current Champion Banner -->
+                            <div class="bg-slate-800/90 rounded-2xl p-3 border border-slate-700/80 mb-6 flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-slate-950 flex-shrink-0 p-1 border border-yellow-400/40">
+                                    ${topWinner ? generateAvatarSVG(topWinner.studentName, topWinner.matricNumber, 1, game.theme) : '<i class="fa-solid fa-ban text-rose-400/80 text-xl flex items-center justify-center h-full"></i>'}
+                                </div>
+                                <div class="overflow-hidden">
+                                    <p class="text-[10px] uppercase font-bold text-yellow-400 tracking-wider">Current Leader</p>
+                                    <h4 class="text-sm font-bold text-white truncate">${topWinner ? topWinner.studentName : (isUnavailable ? 'No Google Sheet Linked' : 'Waiting for Players...')}</h4>
+                                    <p class="text-xs ${topWinner ? 'text-emerald-400' : 'text-slate-400'} font-extrabold">${topWinner ? topWinner.score + '%' : 'N/A'}</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Game Titles -->
-                        <h3 class="text-2xl font-bold font-display text-white tracking-wide group-hover:text-yellow-400 transition">
-                            ${game.name}
-                        </h3>
-                        <p class="text-xs text-sky-200/80 mt-1 mb-4 font-semibold">
-                            ${game.subtitle}
+                        <button onclick="navigateTo('${game.id}')" class="w-full py-3.5 ${game.buttonBg} rounded-xl font-bold font-display text-base transition shadow-lg flex items-center justify-center gap-2">
+                            <span>View Leaderboard</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="space-y-8">
+                    <!-- Hero Section -->
+                    <div class="text-center text-white py-6">
+                        <span class="px-4 py-1.5 bg-yellow-400/20 text-yellow-300 border border-yellow-400/40 rounded-full text-xs font-bold tracking-wide uppercase inline-block mb-3">
+                            <i class="fa-solid fa-gamepad mr-1"></i> Official DAT 20103 Game Hub
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight mb-2">
+                            UTHM Student Leaderboard
+                        </h1>
+                        <p class="text-sm sm:text-base text-sky-100/90 max-w-2xl mx-auto">
+                            Track real-time quiz precision and accuracy scores. Top performers automatically unlock celebratory golden avatars & accessories!
                         </p>
                     </div>
 
-                    <!-- Action Button -->
-                    <button onclick="navigateTo('${game.id}')" class="w-full py-3.5 px-4 ${game.buttonBg} rounded-2xl font-display font-bold text-sm tracking-wide shadow-md transition-all flex items-center justify-center gap-2 group-hover:brightness-110">
-                        <span>Lihat Leaderboard</span>
-                        <i class="fa-solid fa-circle-chevron-right text-base"></i>
-                    </button>
-                </div>
-            `).join('');
-
-            return `
-                <!-- Hero Header Banner -->
-                <div class="text-center my-6 md:my-10 space-y-3">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/20 border border-yellow-400/40 text-yellow-300 text-xs font-bold tracking-wider uppercase backdrop-blur-md animate-bounce">
-                        <i class="fa-solid fa-trophy"></i> DAT 20103 : Database | Sem 1 Sesi 2026/2027
-                    </div>
-                    <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold font-display text-white tracking-tight drop-shadow-lg">
-                        GAME LEADERBOARD
-                    </h2>
-                    <p class="text-sky-100 text-sm sm:text-base max-w-2xl mx-auto font-semibold drop-shadow">
-                        Real-time student rankings for all educational interactive games under DAT 20103: Database (Semester 1 Sesi 2026/2027). Powered by Google Sheets.
-                    </p>
-                </div>
-
-                <!-- Game Cards Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto my-8">
-                    ${gameCardsHtml}
-
-                    <!-- Scalable "More Games Coming Soon" Placeholder Card -->
-                    <div class="bg-slate-900/40 backdrop-blur-md rounded-3xl p-6 border-2 border-dashed border-white/20 flex flex-col items-center justify-center text-center text-white/60 min-h-[320px]">
-                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-3xl mb-4 text-yellow-400">
-                            <i class="fa-solid fa-gamepad"></i>
-                        </div>
-                        <h4 class="text-xl font-bold font-display text-white">GAME BAHARU</h4>
-                        <p class="text-xs text-sky-200/60 mt-1 max-w-[200px]">DAT 20103 Games (Added dynamically via sheet settings)</p>
+                    <!-- Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                        ${cardsHtml}
                     </div>
                 </div>
             `;
         }
 
-        /**
-         * Renders Individual Game Leaderboard View (Top 20 + Pagination)
-         */
-        function renderLeaderboardView(game) {
-            const students = state.leaderboardData[game.id] || [];
-            const totalStudents = students.length;
+        /* Leaderboard View */
+        function renderLeaderboardView(container, gameId) {
+            const game = GAME_CONFIGS.find(g => g.id === gameId);
+            if (!game) return;
 
-            // Pagination calculation
-            const totalPages = Math.max(1, Math.ceil(totalStudents / state.itemsPerPage));
+            const students = state.leaderboardData[gameId] || [];
+
+            // Top 3 Champions
+            const top1 = students[0];
+            const top2 = students[1];
+            const top3 = students[2];
+
+            // Pagination logic for remaining ranks
             const startIndex = (state.currentPage - 1) * state.itemsPerPage;
-            const pageStudents = students.slice(startIndex, startIndex + state.itemsPerPage);
+            const paginatedStudents = students.slice(startIndex, startIndex + state.itemsPerPage);
+            const totalPages = Math.ceil(students.length / state.itemsPerPage) || 1;
 
-            // Separate Podium (Top 3) vs Remaining List (Rank 4-20)
-            const top3Students = students.slice(0, 3);
-            
-            // Build Podium Cards (Display top 3 prominently if page === 1)
-            let podiumHtml = '';
-            if (state.currentPage === 1 && top3Students.length > 0) {
-                podiumHtml = `
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-end max-w-4xl mx-auto">
-                        <!-- Rank 2 (Silver) -->
-                        ${top3Students[1] ? renderPodiumCard(top3Students[1], 2, game.theme) : '<div class="hidden md:block"></div>'}
-                        <!-- Rank 1 (Gold - Center & Larger) -->
-                        ${top3Students[0] ? renderPodiumCard(top3Students[0], 1, game.theme) : '<div></div>'}
-                        <!-- Rank 3 (Bronze) -->
-                        ${top3Students[2] ? renderPodiumCard(top3Students[2], 3, game.theme) : '<div class="hidden md:block"></div>'}
-                    </div>
-                `;
-            }
-
-            // Build Leaderboard Table Rows
-            const tableRowsHtml = pageStudents.map((student, idx) => {
-                const actualRank = startIndex + idx + 1;
-                return renderLeaderboardRow(student, actualRank, game.theme);
-            }).join('');
-
-            return `
-                <!-- Leaderboard Header Navigation -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-                    <button onclick="navigateTo('home')" class="px-4 py-2 bg-slate-900/80 hover:bg-slate-900 text-white rounded-xl text-sm font-bold backdrop-blur-md border border-white/20 transition flex items-center gap-2 shadow-md">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <span>Kembali ke Halaman Utama</span>
-                    </button>
-
-                    <div class="text-center sm:text-right">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white drop-shadow">
-                            ${game.name}
-                        </h2>
-                        <div class="flex items-center justify-center sm:justify-end gap-2 text-xs text-sky-100 font-semibold mt-1">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            <span>Kedudukan Top 20 Real-Time</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Top 3 Podium Visual Display -->
-                ${podiumHtml}
-
-                <!-- Main Leaderboard Table Container -->
-                <div class="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 overflow-hidden max-w-5xl mx-auto">
-                    <!-- Table Header -->
-                    <div class="bg-slate-900 text-white px-4 sm:px-6 py-4 grid grid-cols-12 text-xs sm:text-sm font-bold tracking-wider uppercase font-display border-b border-slate-700">
-                        <div class="col-span-2 sm:col-span-1 text-center">RANK</div>
-                        <div class="col-span-2 sm:col-span-2 text-center">AVATAR</div>
-                        <div class="col-span-4 sm:col-span-4">NAMA PELAJAR</div>
-                        <div class="hidden sm:block sm:col-span-2 text-center">MATRIKS</div>
-                        <div class="hidden sm:block sm:col-span-1 text-center">SEKSYEN</div>
-                        <div class="col-span-4 sm:col-span-2 text-right">MARKAH</div>
-                    </div>
-
-                    <!-- Table Rows -->
-                    <div class="divide-y divide-slate-200/80 min-h-[300px]">
-                        ${tableRowsHtml.length > 0 ? tableRowsHtml : `
-                            <div class="p-12 text-center text-slate-500 font-semibold">
-                                <i class="fa-solid fa-spinner fa-spin text-3xl mb-3 text-sky-500"></i>
-                                <p>Memuatkan data leaderboard...</p>
-                            </div>
-                        `}
-                    </div>
-
-                    <!-- Pagination Navigation Controls -->
-                    <div class="bg-slate-100 px-6 py-4 border-t border-slate-200 flex items-center justify-between">
-                        <div class="text-xs text-slate-600 font-semibold">
-                            Menunjukkan <b>${totalStudents > 0 ? startIndex + 1 : 0}</b> - <b>${Math.min(startIndex + state.itemsPerPage, totalStudents)}</b> daripada <b>${totalStudents}</b> Pelajar
-                        </div>
-
-                        <div class="flex items-center space-x-2">
-                            <button onclick="changePage(${state.currentPage - 1})" ${state.currentPage === 1 ? 'disabled class="opacity-40 cursor-not-allowed px-3 py-1.5 bg-slate-300 rounded-lg text-xs font-bold"' : 'class="px-3 py-1.5 bg-sky-500 hover:bg-sky-400 text-white rounded-lg text-xs font-bold transition shadow"'}>
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <!-- Header Bar -->
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/10 shadow-xl">
+                        <div class="flex items-center gap-4">
+                            <button onclick="navigateTo('home')" class="w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-xl flex items-center justify-center transition border border-white/20">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </button>
-
-                            <span class="text-xs font-bold px-3 py-1 bg-white rounded-lg border border-slate-300">
-                                Muka ${state.currentPage} / ${totalPages}
+                            <div>
+                                <h1 class="text-2xl sm:text-3xl font-bold font-display text-white">${game.name}</h1>
+                                <p class="text-xs text-sky-200/80">${game.subtitle}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 self-end sm:self-auto">
+                            <span class="px-3 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-lg text-xs font-bold">
+                                <i class="fa-solid fa-users mr-1"></i> ${students.length} Total Submissions
                             </span>
-
-                            <button onclick="changePage(${state.currentPage + 1})" ${state.currentPage >= totalPages ? 'disabled class="opacity-40 cursor-not-allowed px-3 py-1.5 bg-slate-300 rounded-lg text-xs font-bold"' : 'class="px-3 py-1.5 bg-sky-500 hover:bg-sky-400 text-white rounded-lg text-xs font-bold transition shadow"'}>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </button>
                         </div>
                     </div>
+
+                    ${students.length === 0 ? `
+                        <!-- Empty Data State -->
+                        <div class="bg-slate-900/80 backdrop-blur-md rounded-3xl p-12 text-center text-white border border-white/10 max-w-2xl mx-auto">
+                            <div class="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-400 text-3xl border-2 border-yellow-400/30">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-display text-yellow-400 mb-2">No Leaderboard Data Available</h3>
+                            <p class="text-sm text-slate-300 mb-6">
+                                ${!game.dataEndpoint ? 'The Google Sheet endpoint for this game is currently unavailable.' : 'No student entries have been logged yet or CORS proxy is loading.'}
+                            </p>
+                            <div class="flex justify-center gap-3">
+                                <button onclick="toggleConfigModal()" class="px-5 py-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold rounded-xl text-sm transition">
+                                    <i class="fa-solid fa-link mr-1"></i> Attach Sheet URL
+                                </button>
+                                <button onclick="toggleDemoMode(true)" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm transition border border-white/20">
+                                    Enable Demo Mode
+                                </button>
+                            </div>
+                        </div>
+                    ` : `
+                        <!-- PODIUM TOP 3 SECTION -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 items-end max-w-4xl mx-auto">
+                            <!-- 2ND PLACE -->
+                            <div class="order-2 md:order-1 bg-slate-900/90 backdrop-blur-md border border-slate-300/30 rounded-2xl p-4 text-center relative shadow-xl transform hover:-translate-y-1 transition">
+                                <span class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full rank-badge-2 font-bold text-slate-800 flex items-center justify-center text-sm">2</span>
+                                <div class="w-20 h-20 mx-auto mt-2 mb-2 p-1 bg-slate-800 rounded-2xl border border-slate-400">
+                                    ${top2 ? generateAvatarSVG(top2.studentName, top2.matricNumber, 2, game.theme) : ''}
+                                </div>
+                                <h4 class="font-bold text-white text-base truncate">${top2 ? top2.studentName : '--'}</h4>
+                                <p class="text-xs text-slate-300 font-mono">${top2 ? top2.matricNumber : '--'}</p>
+                                <div class="mt-3 py-1.5 px-3 bg-slate-800 rounded-xl text-emerald-400 font-extrabold text-sm border border-slate-700">
+                                    Mark %: ${top2 ? top2.score + '%' : '--'}
+                                </div>
+                            </div>
+
+                            <!-- 1ST PLACE (CHAMPION) -->
+                            <div class="order-1 md:order-2 bg-slate-900/90 backdrop-blur-md border-2 border-yellow-400 rounded-3xl p-6 text-center relative shadow-card-sky gold-glow transform hover:-translate-y-1 transition">
+                                <span class="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full rank-badge-1 font-extrabold text-slate-900 flex items-center justify-center text-lg">1</span>
+                                <div class="w-28 h-28 mx-auto mt-2 mb-2 p-1.5 bg-slate-800 rounded-2xl border-2 border-yellow-400">
+                                    ${top1 ? generateAvatarSVG(top1.studentName, top1.matricNumber, 1, game.theme) : ''}
+                                </div>
+                                <h3 class="font-bold text-yellow-300 text-lg truncate">${top1 ? top1.studentName : '--'}</h3>
+                                <p class="text-xs text-sky-200 font-mono">${top1 ? top1.matricNumber : '--'}</p>
+                                <div class="mt-3 py-2 px-4 bg-yellow-400 text-slate-950 font-black text-base rounded-xl shadow-md">
+                                    Mark %: ${top1 ? top1.score + '%' : '--'}
+                                </div>
+                            </div>
+
+                            <!-- 3RD PLACE -->
+                            <div class="order-3 bg-slate-900/90 backdrop-blur-md border border-amber-600/30 rounded-2xl p-4 text-center relative shadow-xl transform hover:-translate-y-1 transition">
+                                <span class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full rank-badge-3 font-bold text-white flex items-center justify-center text-sm">3</span>
+                                <div class="w-20 h-20 mx-auto mt-2 mb-2 p-1 bg-slate-800 rounded-2xl border border-amber-600">
+                                    ${top3 ? generateAvatarSVG(top3.studentName, top3.matricNumber, 3, game.theme) : ''}
+                                </div>
+                                <h4 class="font-bold text-white text-base truncate">${top3 ? top3.studentName : '--'}</h4>
+                                <p class="text-xs text-slate-300 font-mono">${top3 ? top3.matricNumber : '--'}</p>
+                                <div class="mt-3 py-1.5 px-3 bg-slate-800 rounded-xl text-emerald-400 font-extrabold text-sm border border-slate-700">
+                                    Mark %: ${top3 ? top3.score + '%' : '--'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FULL LEADERBOARD TABLE -->
+                        <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl overflow-hidden mt-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm text-white">
+                                    <thead class="bg-slate-950/80 text-yellow-400 text-xs font-bold uppercase tracking-wider border-b border-white/10">
+                                        <tr>
+                                            <th class="py-3.5 px-4 text-center">Rank</th>
+                                            <th class="py-3.5 px-4">Student</th>
+                                            <th class="py-3.5 px-4">Matric No</th>
+                                            <th class="py-3.5 px-4 text-center">Section</th>
+                                            <th class="py-3.5 px-4 text-right">Mark %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-white/5 font-medium">
+                                        ${paginatedStudents.map((student, idx) => {
+                                            const rank = startIndex + idx + 1;
+                                            return `
+                                                <tr class="hover:bg-white/5 transition">
+                                                    <td class="py-3 px-4 text-center font-bold text-slate-300">
+                                                        <span class="w-7 h-7 rounded-lg bg-slate-800 inline-flex items-center justify-center text-xs">
+                                                            #${rank}
+                                                        </span>
+                                                    </td>
+                                                    <td class="py-3 px-4">
+                                                        <div class="flex items-center gap-3">
+                                                            <div class="w-10 h-10 rounded-xl bg-slate-800 p-0.5 border border-white/10 flex-shrink-0">
+                                                                ${generateAvatarSVG(student.studentName, student.matricNumber, rank, game.theme)}
+                                                            </div>
+                                                            <span class="font-bold text-slate-100 truncate max-w-[200px] sm:max-w-none">${student.studentName}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="py-3 px-4 font-mono text-sky-200/80 text-xs">${student.matricNumber}</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        ${student.section ? `<span class="px-2.5 py-1 bg-slate-800 text-sky-300 rounded-md text-xs font-bold border border-slate-700">${student.section}</span>` : '<span class="text-slate-500">-</span>'}
+                                                    </td>
+                                                    <td class="py-3 px-4 text-right">
+                                                        <span class="text-emerald-400 font-extrabold text-base">${student.score}%</span>
+                                                    </td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- PAGINATION CONTROLS -->
+                            ${totalPages > 1 ? `
+                                <div class="p-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-300">
+                                    <span>Showing Page <b>${state.currentPage}</b> of <b>${totalPages}</b></span>
+                                    <div class="flex gap-2">
+                                        <button onclick="changePage(-1)" ${state.currentPage === 1 ? 'disabled class="opacity-50 cursor-not-allowed px-3 py-1.5 bg-slate-800 rounded-lg"' : 'class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition"'}>
+                                            Previous
+                                        </button>
+                                        <button onclick="changePage(1)" ${state.currentPage === totalPages ? 'disabled class="opacity-50 cursor-not-allowed px-3 py-1.5 bg-slate-800 rounded-lg"' : 'class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition"'}>
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `}
                 </div>
             `;
         }
 
-        /**
-         * Renders Rank 1-3 Prominent Podium Cards
-         */
-        function renderPodiumCard(student, rank, gameTheme) {
-            const isRank1 = rank === 1;
-            const borderColors = {
-                1: 'border-yellow-400 bg-gradient-to-b from-amber-100/90 to-yellow-50/90 text-yellow-950',
-                2: 'border-slate-300 bg-gradient-to-b from-slate-100/90 to-slate-50/90 text-slate-900',
-                3: 'border-orange-300 bg-gradient-to-b from-orange-100/90 to-amber-50/90 text-amber-950'
-            };
-
-            const rankBadges = {
-                1: '<div class="rank-badge-1 w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-sm">1</div>',
-                2: '<div class="rank-badge-2 w-7 h-7 rounded-full flex items-center justify-center font-bold text-slate-800 text-xs">2</div>',
-                3: '<div class="rank-badge-3 w-7 h-7 rounded-full flex items-center justify-center font-bold text-white text-xs">3</div>'
-            };
-
-            const avatarSvg = generateAvatarSVG(student.studentName, student.matricNumber, rank, gameTheme);
-
-            return `
-                <div class="relative ${borderColors[rank]} rounded-3xl p-5 border-4 shadow-xl text-center transform ${isRank1 ? 'scale-105 z-10 gold-glow' : 'scale-95'} transition duration-300">
-                    <!-- Rank Badge Pill -->
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        ${rankBadges[rank]}
-                    </div>
-
-                    <!-- Avatar Box -->
-                    <div class="w-24 h-24 ${isRank1 ? 'w-28 h-28' : ''} mx-auto my-2 rounded-full bg-white/80 border-2 border-white/80 p-1 shadow-inner">
-                        ${avatarSvg}
-                    </div>
-
-                    <!-- Student Details -->
-                    <h4 class="font-bold font-display text-base sm:text-lg truncate px-2" title="${student.studentName}">
-                        ${student.studentName}
-                    </h4>
-                    <p class="text-xs font-semibold opacity-75 mb-2">
-                        ${student.matricNumber} • Seksyen ${student.section}
-                    </p>
-
-                    <!-- Score Badge -->
-                    <div class="inline-block px-4 py-1.5 rounded-full bg-slate-900 text-yellow-400 font-extrabold font-display text-lg shadow">
-                        ${student.score} <span class="text-xs font-normal text-white">pts</span>
-                    </div>
-                </div>
-            `;
-        }
-
-        /**
-         * Renders Individual Row in Leaderboard Table
-         */
-        function renderLeaderboardRow(student, rank, gameTheme) {
-            const avatarSvg = generateAvatarSVG(student.studentName, student.matricNumber, rank, gameTheme);
-            
-            // Highlight background for top positions
-            let rowBg = "hover:bg-sky-50/80 transition";
-            if (rank === 1) rowBg = "bg-yellow-100/60 font-bold hover:bg-yellow-100";
-            else if (rank === 2) rowBg = "bg-slate-100/70 font-semibold hover:bg-slate-100";
-            else if (rank === 3) rowBg = "bg-orange-100/50 font-semibold hover:bg-orange-100";
-
-            return `
-                <div class="px-4 sm:px-6 py-3 grid grid-cols-12 items-center text-xs sm:text-sm ${rowBg}">
-                    <!-- Rank Number -->
-                    <div class="col-span-2 sm:col-span-1 text-center font-extrabold font-display text-base">
-                        ${rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`}
-                    </div>
-
-                    <!-- Avatar Icon -->
-                    <div class="col-span-2 sm:col-span-2 flex justify-center">
-                        <div class="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 p-0.5 shadow-sm">
-                            ${avatarSvg}
-                        </div>
-                    </div>
-
-                    <!-- Student Name -->
-                    <div class="col-span-4 sm:col-span-4 font-bold text-slate-900 truncate pr-2">
-                        ${student.studentName}
-                        <div class="text-[10px] text-slate-500 font-normal sm:hidden">
-                            ${student.matricNumber} • Sek ${student.section}
-                        </div>
-                    </div>
-
-                    <!-- Matric Number -->
-                    <div class="hidden sm:block sm:col-span-2 text-center font-mono font-semibold text-slate-600">
-                        ${student.matricNumber}
-                    </div>
-
-                    <!-- Section -->
-                    <div class="hidden sm:block sm:col-span-1 text-center font-bold text-slate-700">
-                        ${student.section}
-                    </div>
-
-                    <!-- Score -->
-                    <div class="col-span-4 sm:col-span-2 text-right font-extrabold font-display text-base sm:text-lg text-blue-950">
-                        ${student.score}
-                    </div>
-                </div>
-            `;
-        }
-
-        /**
-         * Main Render Function
-         */
-        function render() {
-            const container = document.getElementById('app-container');
-            if (state.currentView === 'home') {
-                container.innerHTML = renderHomeView();
-            } else {
-                const game = GAME_CONFIGS.find(g => g.id === state.currentView);
-                if (game) {
-                    container.innerHTML = renderLeaderboardView(game);
-                } else {
-                    navigateTo('home');
-                }
-            }
+        function changePage(delta) {
+            state.currentPage += delta;
+            renderApp();
         }
 
         /* ==========================================================================
-           6. EVENT HANDLERS & MODALS MODULE
+           6. CONFIGURATION MODAL CONTROLS
            ========================================================================== */
-        function changePage(newPage) {
-            const game = GAME_CONFIGS.find(g => g.id === state.activeGameId);
-            if (!game) return;
-            
-            const totalStudents = (state.leaderboardData[game.id] || []).length;
-            const totalPages = Math.max(1, Math.ceil(totalStudents / state.itemsPerPage));
-
-            if (newPage >= 1 && newPage <= totalPages) {
-                state.currentPage = newPage;
-                render();
-            }
-        }
-
         function toggleConfigModal() {
             const modal = document.getElementById('config-modal');
-            modal.classList.toggle('hidden');
-            if (!modal.classList.contains('hidden')) {
+            if (!modal) return;
+
+            const isHidden = modal.classList.contains('hidden');
+            if (isHidden) {
                 renderConfigModalInputs();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
             }
         }
 
         function toggleHelpModal() {
             const modal = document.getElementById('help-modal');
+            if (!modal) return;
             modal.classList.toggle('hidden');
         }
 
         function renderConfigModalInputs() {
             const container = document.getElementById('game-endpoint-settings');
-            container.innerHTML = GAME_CONFIGS.map(g => `
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 mb-1">
-                        ${g.name} Google Sheet Published CSV URL:
-                    </label>
-                    <input type="text" id="endpoint-${g.id}" value="${g.dataEndpoint || ''}" placeholder="https://docs.google.com/spreadsheets/d/e/.../pub?output=csv" class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-yellow-400">
-                </div>
-            `).join('');
+            const demoToggle = document.getElementById('demo-mode-toggle');
+            
+            if (demoToggle) demoToggle.checked = state.isDemoMode;
 
-            document.getElementById('demo-mode-toggle').checked = state.isDemoMode;
+            if (container) {
+                container.innerHTML = GAME_CONFIGS.map(game => `
+                    <div>
+                        <label class="block text-xs font-bold text-sky-200 mb-1">${game.name} Google CSV / Apps Script Endpoint URL:</label>
+                        <input type="text" id="endpoint-${game.id}" value="${game.dataEndpoint || ''}" placeholder="https://docs.google.com/spreadsheets/d/.../pub?output=csv" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-yellow-400">
+                    </div>
+                `).join('');
+            }
         }
 
-        function toggleDemoMode(checked) {
-            state.isDemoMode = checked;
+        function toggleDemoMode(enabled) {
+            state.isDemoMode = enabled;
+            const toggle = document.getElementById('demo-mode-toggle');
+            if (toggle) toggle.checked = enabled;
+            refreshAllGameData();
         }
 
         function saveConfigurations() {
-            GAME_CONFIGS.forEach(g => {
-                const input = document.getElementById(`endpoint-${g.id}`);
+            GAME_CONFIGS.forEach(game => {
+                const input = document.getElementById(`endpoint-${game.id}`);
                 if (input) {
-                    g.dataEndpoint = input.value.trim();
+                    game.dataEndpoint = input.value.trim();
                 }
             });
+
+            const demoToggle = document.getElementById('demo-mode-toggle');
+            if (demoToggle) state.isDemoMode = demoToggle.checked;
+
             toggleConfigModal();
-            triggerDataSync();
+            refreshAllGameData();
         }
 
         /* ==========================================================================
-           7. REAL-TIME DATA SYNC & POLLING CONTROLLER
+           7. AUTOMATIC REAL-TIME SYNC ENGINE
            ========================================================================== */
-        async function triggerDataSync() {
+        async function refreshAllGameData() {
             const timerEl = document.getElementById('global-refresh-timer');
             if (timerEl) timerEl.innerHTML = `<i class="fa-solid fa-arrows-rotate fa-spin mr-1"></i>Syncing...`;
 
             for (const game of GAME_CONFIGS) {
-                const data = await fetchGameData(game);
-                state.leaderboardData[game.id] = data;
+                const students = await fetchGameData(game);
+                
+                if (state.isDemoMode && students.length > 0) {
+                    const randIndex = Math.floor(Math.random() * students.length);
+                    if (students[randIndex]) {
+                        students[randIndex].score = Math.min(100, students[randIndex].score + Math.floor(Math.random() * 2));
+                    }
+                }
+                
+                state.leaderboardData[game.id] = sortLeaderboardData(students);
             }
 
             state.lastUpdated = new Date();
-            render();
+            updateTimerDisplay();
+            renderApp();
+        }
 
-            if (timerEl) {
+        function updateTimerDisplay() {
+            const timerEl = document.getElementById('global-refresh-timer');
+            if (timerEl && state.lastUpdated) {
                 const timeStr = state.lastUpdated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-                timerEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>Updated ${timeStr}`;
+                timerEl.innerHTML = `<i class="fa-solid fa-check text-emerald-400 mr-1"></i>Synced: ${timeStr}`;
             }
         }
 
-        function startAutoPolling() {
+        function startAutoSync() {
             if (state.autoRefreshTimer) clearInterval(state.autoRefreshTimer);
-            // Poll every 5 seconds for near-real-time update
             state.autoRefreshTimer = setInterval(() => {
-                triggerDataSync();
+                refreshAllGameData();
             }, 5000);
         }
 
-        /* Initialize App on Load */
+        /* ==========================================================================
+           8. INITIALIZATION ON WINDOW LOAD
+           ========================================================================== */
         window.onload = function() {
-            navigateTo('home');
-            startAutoPolling();
+            refreshAllGameData().then(() => {
+                startAutoSync();
+            });
         };
     </script>
 </body>
