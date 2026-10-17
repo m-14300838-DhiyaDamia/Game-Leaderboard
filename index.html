@@ -990,7 +990,7 @@
                                 </div>
                                 <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
                                     <a href="${jerebuHeroGame.gameUrl}" target="_blank" rel="noopener noreferrer" onclick="playClickSound()" class="px-6 py-3.5 bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-slate-950 font-black rounded-2xl text-sm transition shadow-lg transform hover:scale-105 flex items-center justify-center gap-2">
-                                        <i class="fa-solid fa-gamepad text-base"></i> Main Game
+                                        <i class="fa-solid fa-gamepad text-base"></i> Play !
                                     </a>
                                     <span class="px-4 py-3 bg-slate-800/80 text-amber-300 border border-amber-400/30 rounded-2xl text-xs font-bold flex items-center justify-center gap-2">
                                         <i class="fa-solid fa-circle-info"></i> No Leaderboard
@@ -1069,7 +1069,7 @@
                                         <div class="p-4 bg-slate-900/60 border-t border-white/10 flex flex-col sm:flex-row gap-2.5 justify-end">
                                             ${game.gameUrl ? `
                                                 <a href="${game.gameUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation(); playClickSound();" class="w-full sm:w-1/2 py-2.5 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-300 hover:to-blue-400 text-slate-950 font-black rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-md hover:scale-[1.02]">
-                                                    <i class="fa-solid fa-gamepad"></i> Main Game
+                                                    <i class="fa-solid fa-gamepad"></i> Coming Soon !
                                                 </a>
                                             ` : ''}
                                             <button onclick="event.stopPropagation(); playClickSound(); navigateTo('leaderboard', '${game.id}')" class="${game.gameUrl ? 'w-full sm:w-1/2' : 'w-full'} py-2.5 ${game.buttonBg} rounded-xl text-xs font-black transition flex items-center justify-center gap-2 shadow-md hover:scale-[1.02]">
