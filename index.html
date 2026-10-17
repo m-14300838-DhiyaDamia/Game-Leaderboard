@@ -271,44 +271,7 @@
         </div>
     </div>
 
-    <div id="help-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border-2 border-sky-400/60 rounded-3xl max-w-2xl w-full p-6 text-white shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="playClickSound(); toggleHelpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-2xl font-bold font-display text-sky-300 mb-2 flex items-center gap-2">
-                <i class="fa-solid fa-masks-theater text-yellow-400"></i> Avatar & Ranking Engine
-            </h3>
-            <p class="text-xs text-slate-300 mb-4">How the Leaderboard automatically generates cartoon avatars from student names.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700">
-                    <h4 class="font-bold text-yellow-400 text-sm mb-2 flex items-center gap-1.5">
-                        <i class="fa-solid fa-venus-mars"></i> 1. Gender Heuristic
-                    </h4>
-                    <ul class="space-y-2 text-slate-300">
-                        <li><b class="text-sky-300">'binti' / 'bt':</b> Female avatar styling with colorful headscarves & expressive features.</li>
-                        <li><b class="text-sky-300">'bin' / 'b.':</b> Male avatar styling with modern haircut options.</li>
-                        <li><b class="text-sky-300">Neutral:</b> Deterministic hashing based on matric number or name.</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700">
-                    <h4 class="font-bold text-yellow-400 text-sm mb-2 flex items-center gap-1.5">
-                        <i class="fa-solid fa-trophy"></i> 2. Ranking Crowns & Badges
-                    </h4>
-                    <ul class="space-y-2 text-slate-300">
-                        <li><b class="text-yellow-300">Rank 1 Champion:</b> Golden crown with gemstones & glowing champion aura.</li>
-                        <li><b class="text-slate-300">Rank 2 & 3:</b> Silver and Bronze rank markers.</li>
-                        <li><b class="text-sky-300">Real-Time Sorting:</b> Sorted automatically by Highest Score, then earliest timestamp.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-6 flex justify-end">
-                <button onclick="playClickSound(); toggleHelpModal()" class="px-6 py-2.5 bg-sky-400 hover:bg-sky-300 text-slate-950 font-black rounded-xl text-sm transition">
-                    Got It!
-                </button>
-            </div>
-        </div>
-    </div>
+   
 
     <script>
         let soundEnabled = true;
