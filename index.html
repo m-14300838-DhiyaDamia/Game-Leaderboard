@@ -43,20 +43,7 @@
             }
         }
 
-        <audio id="bgMusic" autoplay loop>
-  <source src="gamehubmusic.mp3" type="audio/mpeg">
-</audio>
 
-<script>
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.3;
-
-  music.play().catch(() => {
-    document.addEventListener("click", () => {
-      music.play();
-    }, { once: true });
-  });
-</script>
     </script>
     <style>
         body {
@@ -196,6 +183,21 @@
     </style>
 </head>
 <body class="text-slate-100 min-h-screen flex flex-col relative">
+       <!-- BACKGROUND MUSIC -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="gamehubmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const bgMusic = document.getElementById("bgMusic");
+        bgMusic.volume = 0.3;
+
+        bgMusic.play().catch(() => {
+            document.addEventListener("click", () => {
+                bgMusic.play();
+            }, { once: true });
+        });
+    </script>
     <canvas id="bg-3d-canvas"></canvas>
     
     <div class="relative z-10 flex flex-col min-h-screen">
